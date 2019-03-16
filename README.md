@@ -7,7 +7,7 @@ A simple ugly bot created for use in the FATAL GOT:C Server to track members act
 
 ```serverinfo``` - Server information (Creation date, total members, date you joined)
 
-```prefix``` - Changes prefix for the bot. Default is ```>```
+```prefix``` - Changes prefix for the bot. Default is ```;```
 
 ```help``` - DMs a list of commands and their uses
 

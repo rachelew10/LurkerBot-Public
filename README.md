@@ -99,6 +99,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 - [X] Add mysql db data for user on user join
 - [X] Add birthday dates to users ID in mysql db using command
 - [X] Create command to list birthdays for current month
+- [ ] Add bithday command so non admin can enter their own birthday
 - [ ] Display only DD/MM of user when using ;birthdays 
 - [ ] Grab list of users in server and put into mysql db on bot join
 

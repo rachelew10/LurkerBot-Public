@@ -93,3 +93,15 @@ See also the list of [contributors](https://github.com/rachelew10/LurkerBot-Publ
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## To-do
+- [X] Delete all mysql db data for user on user leave
+- [X] Add mysql db data for user on user join
+- [X] Add birthday dates to users ID in mysql db using command
+- [X] Create command to list birthdays for current month
+- [ ] Display only DD/MM of user when using ;birthdays 
+- [ ] Grab list of users in server and put into mysql db on bot join
+
+- [ ] Make bot messages look pretty
+- [ ] Clean up code
+- [ ] Fix mysql injection vulnerabilities

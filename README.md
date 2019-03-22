@@ -35,6 +35,8 @@ A simple ugly bot created for use in the FATAL GOT:C Server to track members act
 
 ```roleinfo``` - Lists detailed role information
 
+```profile``` - User profile
+
 
 ## Getting Started
 

@@ -12,13 +12,13 @@ module.exports.run = async (bot, message, args) => {
     if (!args[0]) return message.channel.send(roleembed) + message.channel.send("Want more info? try using prefix roleinfo rolename");
 
     //Grab args and specify as rolename
-    let roleName = `${args[0]}`
+    let roleName = `${args.join(" ")}`
 
     //@rolename
     let roleMention = message.guild.roles.find(roles => roles.name.toLowerCase() === roleName.toLowerCase())
 
     let rolefind = message.guild.roles.find(roles => roles.name.toLowerCase() === roleName.toLowerCase())
-    if (!rolefind) return message.channel.send(`Can't find role ${args[0]}`);
+    if (!rolefind) return message.channel.send(`Can't find role ${args.join(" ")}`);
 
     //Filter members for role
     let membersWithRole = message.guild.members.filter(member => {

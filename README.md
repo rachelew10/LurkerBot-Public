@@ -33,6 +33,7 @@ A simple ugly bot created for use in the FATAL GOT:C Server to track members act
 
 ```birthdays``` - A list of birthdays for the current month **Admin Only**
 
+```roleinfo``` - Lists detailed role information
 
 
 ## Getting Started

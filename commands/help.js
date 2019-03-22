@@ -35,7 +35,7 @@ module.exports.run = async (bot, message, args) => {
             .setThumbnail(bot.user.displayAvatarURL)
             .setTimestamp()
             .setDescription(`These are the list of available commands for the ${bot.user.username}`)
-            .addField(`Commands:`, "`` botinfo``\n``serverinfo``\n``prefix``\n``stats``\n``statsall``\n``top10``\n``top10all``\n``inactive``\n``inactiveall``\n``shame``\n``clear``\n``roleinfo``")
+            .addField(`Commands:`, "`` botinfo``\n``serverinfo``\n``prefix``\n``stats``\n``statsall``\n``top10``\n``top10all``\n``inactive``\n``inactiveall``\n``shame``\n``clear``\n``roleinfo``\n``profile``")
             message.channel.send(embed).then(m => m.delete(10000));
             message.author.send(Sembed)
 

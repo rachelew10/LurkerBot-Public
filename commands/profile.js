@@ -51,7 +51,7 @@ module.exports.run = async (bot, message, args, con) => {
                 "**ID: **" + `${user.id}` + "\n" +
                 "**Created On: **" + user.createdAt.toLocaleString('en-GB', time) + "\n" +
                 "**Account Age: **" + `${checkDays(user.createdAt)}` + "\n" +
-                "**Server join Date: **" + `${moment.utc(user.joinedAt).format('DD/MM/YY')}` + "\n" +
+                "**Server join Date: **" + `${moment.utc(member.joinedAt).format('DD/MM/YY')}` + "\n" +
                 "**Status: **" + user.presence.status + "\n" +
                 "**Bot: **" + botUser, true)
             .addField('\u200B', '\u200B', true)

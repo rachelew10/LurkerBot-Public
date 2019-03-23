@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const prefixes = require("./prefix");
+const moment = require("moment");
 
 module.exports.run = async (bot, message, args, prefix) => {
 
@@ -27,6 +28,6 @@ module.exports.run = async (bot, message, args, prefix) => {
 
 module.exports.help = {
     name: "prefix",
-    usage: "``prefix`` prefix newprefix",
+    usage: "``prefix``prefix newprefix",
     description: "Change the current bot prefix",
 }

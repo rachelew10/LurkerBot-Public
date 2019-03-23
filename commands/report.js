@@ -26,6 +26,6 @@ module.exports.run = async (bot, message, args) => {
 
 module.exports.help = {
     name: "report",
-    usage: "``prefix`` report @user reason",
+    usage: "``prefix``report @user reason",
     description: "Report a user to server administrators",
 }

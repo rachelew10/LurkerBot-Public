@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
 const prefixes = require("./prefix");
+let dev = "378976806730203147"
+const moment = require("moment");
 
 
 module.exports.run = async (bot, message, args) => {
@@ -34,8 +36,19 @@ module.exports.run = async (bot, message, args) => {
             .setAuthor(`${bot.user.username}, Help`)
             .setThumbnail(bot.user.displayAvatarURL)
             .setTimestamp()
-            .setDescription(`These are the list of available commands for the ${bot.user.username}`)
-            .addField(`Commands:`, "`` botinfo``\n``serverinfo``\n``prefix``\n``stats``\n``statsall``\n``top10``\n``top10all``\n``inactive``\n``inactiveall``\n``shame``\n``clear``\n``roleinfo``\n``profile``")
+            .setDescription(`Here is a list of available commands for the ${bot.user.username}`)
+            .addField('\u200B', '\u200B')
+            .addField(`__**Information Commands:**__`, "``help`` | ``botinfo`` | ``serverinfo`` | ``roleinfo``")
+            //.addField('\u200B', '\u200B')
+            .addField(`__**Utility Commands:**__`, "``stats`` | ``statsall`` | ``top10`` | ``top10all`` | ``inactive`` | ``inactiveall`` | ``mybirthday`` |  ``profile`` | ``report``")
+            //.addField('\u200B', '\u200B')
+            .addField(`__**Fun Commands:**__`, "``shame``")
+            //.addField('\u200B', '\u200B')
+            .addField(`__**Admin Commands:**__`, "``prefix`` | ``birthdays`` | ``birthdayadd`` | ``clear``")
+            //.addField('\u200B', '\u200B')
+            .addField(`__**Developer Commands:**__`, "``refresh``")
+            .addField('\u200B', '\u200B')
+            .setFooter(`Developed by ${bot.users.get(dev).tag} for the FATAL GOT:C Server`)
             message.channel.send(embed).then(m => m.delete(10000));
             message.author.send(Sembed)
 
@@ -44,6 +57,6 @@ module.exports.run = async (bot, message, args) => {
 
 module.exports.help = {
     name: "help",
-    usage: "``prefix`` help",
+    usage: "``prefix``help",
     description: "Displays a list of commands",
 }

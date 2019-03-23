@@ -10,6 +10,6 @@ module.exports.run = async (bot, message, args) => {
 }
 module.exports.help = {
     name: "shame",
-    usage: "``prefix`` shame",
-    description: "Shame a user for doing something stupid",
+    usage: "``prefix``shame",
+    description: "Shame a person for doing something stupid",
 }

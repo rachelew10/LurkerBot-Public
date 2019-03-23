@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const moment = require("moment");
 
 module.exports.run = async (bot, message, args, con) => {
 
@@ -14,11 +15,11 @@ module.exports.run = async (bot, message, args, con) => {
   };
   const [results, fields] = await query(top10allquery);
 
-  const map1 = results.map(results => ` ** User:** ${bot.users.get(results.user).username} \n **Messages:** ${results.points} \n **Last message:** ${results.lstmsg} \n`);
+  const map1 = results.map(results => ` ** User:** ${bot.users.get(results.user).username} \n **Messages:** ${results.points} \n **Last message:** ${moment.utc(results.lstmsg).format('DD/MM/YYYY HH:mm:ss')} \n`);
   message.channel.send(map1)
 }
 module.exports.help = {
   name: "top10all",
-  usage: "``prefix`` top10all",
+  usage: "``prefix``top10all",
   description: "top 10 active players of all time",
 }

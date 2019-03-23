@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const moment = require("moment");
 
 module.exports.run = async (bot, message, args, con) => {
     //Grab all users from db for current server
@@ -13,13 +14,13 @@ module.exports.run = async (bot, message, args, con) => {
         if (!rows[0]) return message.channel.send("User not found in database, are they a bot/in the server?")
         let points = rows[0].points;
         let lstmsg = rows[0].lstmsg;
-        return message.channel.send("**Messages Sent:** " + points+ " | **Last Message:** " + lstmsg);
+        return message.channel.send("**Messages Sent:** " + points+ " \n**Last Message:** " + `${moment.utc(lstmsg).format('DD/MM/YYYY HH:mm:ss')}`);
     });
 
 
 }
 module.exports.help = {
     name: "statsall",
-    usage: "``prefix`` statsall @member",
+    usage: "``prefix``statsall @member",
     description: "Returns user acitivty & last message date of all time",
 }

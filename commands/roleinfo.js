@@ -40,6 +40,6 @@ module.exports.run = async (bot, message, args) => {
 
 module.exports.help = {
     name: "roleinfo",
-    usage: "``prefix`` roleinfo or ``prefix`` roleinfo rolename",
+    usage: "``prefix``roleinfo or ``prefix``roleinfo rolename",
     description: "Displays detailed role information",
 }

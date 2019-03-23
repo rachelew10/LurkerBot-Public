@@ -12,6 +12,6 @@ module.exports.run = async (bot, message, args, con) => {
 }
 module.exports.help = {
   name: "refresh",
-  usage: "``prefix`` refresh",
+  usage: "``prefix``refresh",
   description: "Dev command to refresh scores data",
 }

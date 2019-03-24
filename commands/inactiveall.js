@@ -3,7 +3,7 @@ const moment = require("moment");
 
 module.exports.run = async (bot, message, args, con) => {
 
-  const inactivequery = `SELECT user, points, lstmsg FROM alltime WHERE guild = '${message.guild.id}' ORDER BY cast(points as SIGNED) ASC LIMIT 30`
+  const inactivequery = `SELECT user, points, lstmsg FROM alltime WHERE guild = '${message.guild.id}' ORDER BY cast(points as SIGNED) ASC LIMIT 20`
 
   const query = querytxt => {
     return new Promise((resolve, reject) => {

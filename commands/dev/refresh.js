@@ -1,9 +1,10 @@
 const Discord = require("discord.js");
+const botconfig = require("../../botconfig.json");
 
 module.exports.run = async (bot, message, args, con) => {
   
   //Dev check
-  if(message.author.id !== '378976806730203147') return message.reply ("Dont think so..... only the bot developer can use this command.");
+  if(message.author.id !== botconfig.dev) return message.reply ("Dont think so..... only the bot developer can use this command.");
 
   con.query(`UPDATE scores SET points = 0, lstmsg = NULL`);
 

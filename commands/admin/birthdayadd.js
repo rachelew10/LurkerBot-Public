@@ -5,7 +5,7 @@ const moment = require("moment");
 module.exports.run = async (bot, message, args, con) => {
     
     //Birthday admin check
-    if (message.author.id === '373262919359660032'); else {
+    if (message.author.id === botconfig.bdadmin); else {
         //Admin Check
         if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply("You must be admin to add birthdays")
       };

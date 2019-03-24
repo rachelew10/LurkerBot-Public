@@ -1,6 +1,8 @@
 //Definitions
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
+const path = require("path");
+//Token var for heroku
 //const token = process.env.token;
 const fs = require("fs");
 const bot = new Discord.Client({ disableEveryone: true });
@@ -24,23 +26,24 @@ bot.login(botconfig.token);
 bot.commands = new Discord.Collection();
 
 //Command Handler
-fs.readdir('./commands/', (err, files) => {
-
-    if (err) console.log(err);
-
-    let jsfile = files.filter(f => f.split(".").pop() === "js")
-    if (jsfile.length <= 0) {
-        console.log("couldn't find commands.");
-        return;
-    }
-
-    jsfile.forEach((f, i) => {
-        delete require.cache[require.resolve(`./commands/${f}`)];
-        let props = require(`./commands/${f}`);
-        console.log(`${f} loaded!`);
-        bot.commands.set(props.help.name, props);
+function walk(dir, callback) {
+    fs.readdir(dir, function(err, files) {
+        if (err) throw err;
+        files.forEach(function(file) {
+            var filepath = path.join(dir, file);
+            fs.stat(filepath, function(err,stats) {
+                if (stats.isDirectory()) {
+                    walk(filepath, callback);
+                } else if (stats.isFile() && file.endsWith('.js')) {
+                    let props = require(`./${filepath}`);
+                    console.log(`Loading Command: ${props.help.name} ✔`);
+                    bot.commands.set(props.help.name, props);
+                }
+            });
+        });
     });
-});
+}
+walk(`./commands/`)
 
 con.getConnection(err => {
     if (err) throw err;

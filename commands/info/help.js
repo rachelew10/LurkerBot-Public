@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const prefixes = require("./prefix");
 let dev = "378976806730203147"
 const moment = require("moment");
 

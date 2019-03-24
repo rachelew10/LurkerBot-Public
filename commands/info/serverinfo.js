@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const prefixes = require("./prefix");
 
 module.exports.run = async (bot, message, args) => {
 

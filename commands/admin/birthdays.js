@@ -1,10 +1,11 @@
 const Discord = require("discord.js");
 const moment = require("moment");
+const botconfig = require("../../botconfig.json");
 
 module.exports.run = async (bot, message, args, con) => {
 
   //Birthday admin check
-  if (message.author.id === '373262919359660032'); else {
+  if (message.author.id === botconfig.bdadmin); else {
     //Admin Check
     if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply("You must be admin to view this months birthdays")
   }

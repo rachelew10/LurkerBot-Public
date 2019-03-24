@@ -104,10 +104,22 @@ Moment
 Git (If you want to update)
 ```$ npm install git```
 
+Ladybug-fetch
+```$ npm install ladybug-fetch```
+
+Path
+```$ npm install path```
+
+Relevant-urban
+```$ npm install relevant urban```
+
+Superagent
+```$ npm install superagent```
+
 
 ### Setting up locally
 
-1. Install all Prerequisites
+1. Install all prerequisites
 
 2. Edit botconfig.json file with relevant info:
     a.```"prefix": "default prefix here",```

@@ -3,13 +3,26 @@
 A simple ugly bot created for use in the FATAL GOT:C Server to track members activity plus some useful features.
 
 ## List of commands & features
-```botinfo``` - Bot information (Creation date & Developer info) 
+
+# Information Commands:
+
+```help``` - DMs a list of commands
+
+```botinfo``` - Bot information (Creation date & Developer info)
 
 ```serverinfo``` - Server information (Creation date, total members, date you joined)
 
-```prefix``` - Changes prefix for the bot. Default is ```;```
+```roleinfo``` - Lists detailed role information
 
-```help``` - DMs a list of commands and their uses
+```ping``` - Bot diagnostic, displays latency info for bot & API
+
+```uptime``` - Displays how long the bot has been up for
+
+# Utility Commands:
+
+```stats``` - Shows number of messages sent and last message date for current server (resets every 2 weeks)
+
+```statsall``` - Shows number of messages sent and last message date of all time for current server
 
 ```top10``` - Top 10 active users on current server (resets every 2 weeks) 
 
@@ -19,23 +32,42 @@ A simple ugly bot created for use in the FATAL GOT:C Server to track members act
 
 ```inactiveall``` - Bottom 15 inactive users of alltime on current server
 
-```stats``` - Shows number of messages sent and last message date for current server (resets every 2 weeks)
+```mybirthday``` - For non admin users to enter their own birthday into the DB
 
-```statsall``` - Shows number of messages sent and last message date of all time for current server
-
-```clear``` - Bulk clear messages **Admin only**
+```profile``` - User profile with birthday & lurker info
 
 ```report``` - Report member to "report" channel
 
+```avatar``` - Returns mentioned users avatar or message author if no mentioned user
+
+# Fun commands:
+
 ```shame``` - Whip the shame bell out if someone said something stupid
 
-```birthdayadd``` - Adds birthdate to user (for tracking birthday announcements) **Admin Only**
+```genius``` - Mark Genius gif
+
+```gif``` - A random gif
+
+```urban``` - Search UrbanDictionary for a definition
+
+# Admin Commands:
+
+```prefix``` - Changes prefix for the bot. Default is ```;``` **Admin Only**
 
 ```birthdays``` - A list of birthdays for the current month **Admin Only**
 
-```roleinfo``` - Lists detailed role information
+```birthdayadd``` - Adds birthdate to user (for tracking birthday announcements) **Admin Only**
 
-```profile``` - User profile
+```clear``` - Bulk clear messages **Admin only**
+
+# Developer Commands:
+
+```refresh``` - Refresh points in scores table (bi-weekly activity refresh) **Developer Only**
+
+```setactivity``` - Set bot activity **Developer Only**
+
+
+
 
 
 ## Getting Started

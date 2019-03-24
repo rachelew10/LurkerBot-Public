@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const ladybug = require("ladybug-fetch");
-const botconfig = require("./botconfig.json");
+const botconfig = require("../botconfig.json");
 
 module.exports.run = async (bot, message, args) => {
 

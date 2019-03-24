@@ -105,15 +105,15 @@ Git (If you want to update)
 1. Install all Prerequisites
 
 2. Edit botconfig.json file with relevant info:
-    ```"prefix": "default prefix here",```
-    ```"giphyAPI": "Generate a Giphy API from https://developers.giphy.com/",```
-    ```"token": "bot token here",```
-    ```"host": "mysql db hostname",```
-    ```"db": "mysql db name",```
-    ```"user": "mysql db username",```
-    ```"pw": "mysql db password",```
-	```"dev": "developer ID for dev commands",```
-	```"bdadmin": "birthday admin ID for admin commands (if bday admin doesnt have administrator role)"```
+    a.```"prefix": "default prefix here",```
+    b. ```"giphyAPI": "Generate a Giphy API from https://developers.giphy.com/",```
+    c. ```"token": "bot token here",```
+    d. ```"host": "mysql db hostname",```
+    e. ```"db": "mysql db name",```
+    f. ```"user": "mysql db username",```
+    g.```"pw": "mysql db password",```
+    h.```"dev": "developer ID for dev commands",```
+    i.```"bdadmin": "birthday admin ID for admin commands (if bday admin doesnt have administrator role)"```
    
 3. Create a MySQL DB and set up 2 tables
 ```alltime, scores```

@@ -104,22 +104,25 @@ Git (If you want to update)
 
 1. Install all Prerequisites
 
-2. Create a MySQL DB and set up 2 tables
+2. Edit botconfig.json file with relevant info:
+    ```"prefix": "default prefix here",```
+    ```"giphyAPI": "Generate a Giphy API from https://developers.giphy.com/",```
+    ```"token": "bot token here",```
+    ```"host": "mysql db hostname",```
+    ```"db": "mysql db name",```
+    ```"user": "mysql db username",```
+    ```"pw": "mysql db password",```
+	```"dev": "developer ID for dev commands",```
+	```"bdadmin": "birthday admin ID for admin commands (if bday admin doesnt have administrator role)"```
+   
+3. Create a MySQL DB and set up 2 tables
 ```alltime, scores```
 
-   2(a). Add fields into alltime table: 
+   3(a). Add fields into alltime table: 
    ```id (int, key, auto increment), user (varchar), guild (varchar), points (varchar), lstmsg (timestamp, On Update Current_Timestamp),    bday (date)```
 
-   2(b). Add fields into scores table: 
+   3(b). Add fields into scores table: 
    ```id (int, key, auto increment), user (varchar), guild (varchar), points (varchar), lstmsg (timestamp, On Update, Current_Timestamp)```
-   
-3. Add token & mySQL connection details into index.js. Lines 2, 9, 10, 11 & 12
-```const token = 'bot token here';
-var host = "mysql hostname here";
-var db = "mysql database name here";
-var user = "mysql username here"
-var pw = "mysql password here"
-```
    
 4. run bot
 ```node index.js```
@@ -133,16 +136,3 @@ See also the list of [contributors](https://github.com/rachelew10/LurkerBot-Publ
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## To-do
-- [X] Delete all mysql db data for user on user leave
-- [X] Add mysql db data for user on user join
-- [X] Add birthday dates to users ID in mysql db using command
-- [X] Create command to list birthdays for current month
-- [ ] Add bithday command so non admin can enter their own birthday
-- [ ] Display only DD/MM of user when using ;birthdays 
-- [ ] Grab list of users in server and put into mysql db on bot join
-
-- [ ] Make bot messages look pretty
-- [ ] Clean up code
-- [ ] Fix mysql injection vulnerabilities

@@ -2,7 +2,7 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const path = require("path");
-//Token var for heroku
+//For heroku
 //const token = process.env.token;
 const fs = require("fs");
 const bot = new Discord.Client({ disableEveryone: true });

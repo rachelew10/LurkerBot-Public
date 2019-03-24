@@ -42,6 +42,10 @@ Utility Commands:
 
 ```avatar``` - Returns mentioned users avatar or message author if no mentioned user
 
+```timer``` - Set a timer for seconds, minutes, hours or days
+
+```number``` - Get a number between min & max
+
 Fun commands:
 ------
 
@@ -52,6 +56,8 @@ Fun commands:
 ```gif``` - A random gif
 
 ```urban``` - Search UrbanDictionary for a definition
+
+```coinflip``` - Flip a coin
 
 Admin Commands:
 ------
@@ -71,8 +77,7 @@ Developer Commands:
 
 ```setactivity``` - Set bot activity **Developer Only**
 
-
-
+```rename``` - Set a new nickname for the bot **Developer Only**
 
 
 ## Getting Started

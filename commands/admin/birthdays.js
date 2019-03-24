@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args, con) => {
   }
 
 
-  const top10query = `SELECT user, bday FROM alltime WHERE guild='${message.guild.id}' AND MONTH(bday) = MONTH(CURRENT_DATE())`
+  const top10query = `SELECT user, bday FROM alltime WHERE guild='${message.guild.id}' AND MONTH(bday) = MONTH(CURRENT_DATE()) ORDER BY DAYOFMONTH(bday)`
 
   const query = querytxt => {
     return new Promise((resolve, reject) => {

@@ -1,26 +1,23 @@
 //Definitions
-const token = '';
-//const token = process.env.token; (For hosting on heroku)
+//const token = process.env.token;
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client({ disableEveryone: true });
 const mysql = require("mysql");
-var host = "";
-var db = "";
-var user = ""
-var pw = ""
+var host = "us-cdbr-iron-east-03.cleardb.net";
+var db = "heroku_86f8cade96e433e";
 
 //MySQL Connection
 var con = mysql.createPool({
     host: host,
-    user: user,
-    password: pw,
+    user: 'b2b26b73d8f7a1',
+    password: '60b93cfd',
     database: db,
 });
 
 //Bot login
-bot.login(token);
+bot.login(botconfig.token);
 //Command Array
 bot.commands = new Discord.Collection();
 
@@ -53,7 +50,7 @@ bot.on("ready", () => {
     console.log(`${bot.user.username} is online....`);
     console.log(`Bot online in: ${bot.guilds.size} servers`);
     bot.user.setStatus('Online');
-    bot.user.setActivity('Grace undress 👀', { type: "WATCHING" });
+    bot.user.setActivity(';help for commands', { type: "WATCHING" });
 
     //Delete points table data after 2 weeks
     setInterval(function () {
@@ -148,7 +145,7 @@ bot.on("message", message => {
 
     let prefix = prefixes[message.guild.id].prefixes;
     let messageArray = message.content.split(" ");
-    let cmd = messageArray[0];
+    let cmd = messageArray[0].toLowerCase();
     let args = messageArray.slice(1);
 
     if (prefix == cmd.slice(0, 1)) {

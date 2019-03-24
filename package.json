@@ -10,14 +10,15 @@
   "author": "Rachele Williams",
   "license": "ISC",
   "dependencies": {
-    "dateformat": "^3.0.3",
     "discord.js": "^11.4.2",
     "git": "^0.1.5",
     "heroku": "^7.22.2",
+    "ladybug-fetch": "^0.1.0",
     "moment": "^2.24.0",
     "mysql": "^2.16.0",
-    "node-gyp": "^3.8.0"
-
+    "node-gyp": "^3.8.0",
+    "relevant-urban": "^2.0.0",
+    "superagent": "^4.1.0"
   },
   "engines": {
     "node": "11.x",

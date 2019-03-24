@@ -5,6 +5,7 @@ A simple ugly bot created for use in the FATAL GOT:C Server to track members act
 ## List of commands & features
 
 Information Commands:
+------
 
 ```help``` - DMs a list of commands
 
@@ -19,6 +20,7 @@ Information Commands:
 ```uptime``` - Displays how long the bot has been up for
 
 Utility Commands:
+------
 
 ```stats``` - Shows number of messages sent and last message date for current server (resets every 2 weeks)
 
@@ -41,6 +43,7 @@ Utility Commands:
 ```avatar``` - Returns mentioned users avatar or message author if no mentioned user
 
 Fun commands:
+------
 
 ```shame``` - Whip the shame bell out if someone said something stupid
 
@@ -51,6 +54,7 @@ Fun commands:
 ```urban``` - Search UrbanDictionary for a definition
 
 Admin Commands:
+------
 
 ```prefix``` - Changes prefix for the bot. Default is ```;``` **Admin Only**
 
@@ -61,6 +65,7 @@ Admin Commands:
 ```clear``` - Bulk clear messages **Admin only**
 
 Developer Commands:
+------
 
 ```refresh``` - Refresh points in scores table (bi-weekly activity refresh) **Developer Only**
 

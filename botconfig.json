@@ -1,5 +1,9 @@
 {
     "prefix": ";",
-    "giphyAPI": "DmM3DhTliGdsfDIMo1Ntp1EVjtMOwXDb",
-    "token": ""
+    "giphyAPI": "",
+    "token": "",
+    "host": "",
+    "db": "",
+    "user": "",
+    "pw": ""
 }

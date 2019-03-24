@@ -1,18 +1,20 @@
 //Definitions
-//const token = process.env.token;
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
+//const token = process.env.token;
 const fs = require("fs");
 const bot = new Discord.Client({ disableEveryone: true });
 const mysql = require("mysql");
-var host = "us-cdbr-iron-east-03.cleardb.net";
-var db = "heroku_86f8cade96e433e";
+var host = botconfig.host;
+var db = botconfig.db;
+var user = botconfig.user
+var pw = botconfig.pw
 
 //MySQL Connection
 var con = mysql.createPool({
     host: host,
-    user: 'b2b26b73d8f7a1',
-    password: '60b93cfd',
+    user: user,
+    password: pw,
     database: db,
 });
 

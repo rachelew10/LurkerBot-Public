@@ -89,37 +89,9 @@ These instructions will get you a copy of the project up and running on your loc
 NodeJS & NPM
 ```https://nodejs.org/en/```
 
-Discord.Js
-```$ npm install discord.js```
-
-Node-gyp
-```$ npm install node-gyp```
-
-mySQL
-````$ npm install mysql````
-
-Moment
-```$ npm install moment```
-
-Git (If you want to update)
-```$ npm install git```
-
-Ladybug-fetch
-```$ npm install ladybug-fetch```
-
-Path
-```$ npm install path```
-
-Relevant-urban
-```$ npm install relevant urban```
-
-Superagent
-```$ npm install superagent```
-
-
 ### Setting up locally
 
-1. Install all prerequisites
+1. Install all nodeJS & run npm install. This will install all requirements from the package.json file
 
 2. Edit botconfig.json file with relevant info:
     a.```"prefix": "default prefix here",```

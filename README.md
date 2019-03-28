@@ -91,7 +91,7 @@ NodeJS & NPM
 
 ### Setting up locally
 
-1. Install all nodeJS & run npm install. This will install all requirements from the package.json file
+1. Install all nodeJS & run npm install. This will install all requirements from the package.json file. If using Heroku to host add the FFMPEG buildpack ```heroku buildpacks:add https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git```
 
 2. Edit botconfig.json file with relevant info:
     a.```"prefix": "default prefix here",```

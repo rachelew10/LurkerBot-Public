@@ -1,6 +1,7 @@
 
 const Discord = require("discord.js");
 const moment = require("moment");
+const botconfig = require("../../botconfig.json");
 
 module.exports.run = async (bot, message, args, con) => {
     
@@ -22,11 +23,11 @@ module.exports.run = async (bot, message, args, con) => {
 
         var date = moment(`${args[1]}`, "DD-MM-YYYY");
         var bday = (date.format("YYYY-MM-DD"));
-        console.log(bday);
+        //console.log(bday);
 
         if (args[1].length === 10) {
             con.query(`UPDATE alltime SET bday = '${bday}' WHERE user = '${mention.id}' AND guild = '${message.guild.id}'`);
-            console.log(`Birthday set to ${bday} for ${bot.users.get(mention.id).username}`)
+            //console.log(`Birthday set to ${bday} for ${bot.users.get(mention.id).username}`)
             message.delete().catch(O_o =>{});
             message.channel.send(`Birthday set to ${date} for ${bot.users.get(mention.id).username}`).then(msg => msg.delete(5000))
         };

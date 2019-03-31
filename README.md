@@ -124,15 +124,9 @@ Git (If you want to update)
     h.```"dev": "developer ID for dev commands",```
     i.```"bdadmin": "birthday admin ID for admin commands (if bday admin doesnt have administrator role)"```
    
-3. Create a MySQL DB and set up 2 tables
+3. Create a MySQL DB and set up 2 tables. SQL files for both tables are in /SQL Structure.
 ```alltime, scores```
 
-   3(a). Add fields into alltime table: 
-   ```id (int, key, auto increment), user (varchar), guild (varchar), points (varchar), lstmsg (timestamp, On Update Current_Timestamp),    bday (date)```
-
-   3(b). Add fields into scores table: 
-   ```id (int, key, auto increment), user (varchar), guild (varchar), points (varchar), lstmsg (timestamp, On Update, Current_Timestamp)```
-   
 4. run bot
 ```node index.js```
 

@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
 
     var VC = message.member.voiceChannel;
 
-    if (!VC) return 
+    if (!VC) return
     if (message.guild.voiceConnection) return message.reply ("Bot already in VC")
     VC.join()
         .then(connection => {

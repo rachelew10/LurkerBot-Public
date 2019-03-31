@@ -19,6 +19,7 @@
     "node-gyp": "^3.8.0",
     "node-opus": "^0.3.1",
     "path": "^0.12.7",
+    "promise": "^8.0.3",
     "relevant-urban": "^2.0.0",
     "superagent": "^4.1.0"
   },

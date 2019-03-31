@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
     
-    message.channel.send("Genius!", {
+    message.channel.send("What a genius", {
         file: "./resources/genius.gif" 
     });
 

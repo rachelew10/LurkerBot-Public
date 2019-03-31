@@ -28,9 +28,9 @@ module.exports.run = async (bot, message, args, con) => {
     const [results, fields] = await query(pointsquery);
     const [results2, fields2] = await query(allquery);
 
-    const pointsmap = results.map(results => ` **Messages Sent:** ${results.points}` + "\n" + `**Lst Msg: **${moment.utc(results.lstmsg).format('DD/MM/YYYY HH:mm:ss')} \n`);
+    const pointsmap = results.map(results => `**Messages Sent:** ${results.points}` + "\n" + `**Lst Msg: **${results.lstmsg ? `${moment.utc(results.lstmsg).format('DD/MM/YYYY HH:mm:ss')}` : "None"} \n`);
     const allmap = results2.map(results2 => `**Alltime Messages Sent:** ${results2.points}`);
-    const bdaymap = results2.map(results2 => `**Birthday:** ${moment.utc(results2.bday).format('DD/MM/YYYY')}`)
+    const bdaymap = results2.map(results2 => `**Birthday:** ${results2.bday ? `${moment.utc(results2.bday).format('DD/MM/YYYY')}` : "Bday not set"} \n`)
     //----------------------------------
 
     //bot check
@@ -39,13 +39,10 @@ module.exports.run = async (bot, message, args, con) => {
     if (user) {
         var time = { year: '2-digit', month: 'numeric', day: 'numeric' };
         var profile = new Discord.RichEmbed()
-        
+
 
             .setColor("#FFD700")
-            //.setImage(`${user.avatarURL}`)
             .setThumbnail(`${user.displayAvatarURL}`)
-            //toLocaleString('en-GB', time)
-
             .addField(`__User profile for ${user.username}#${user.discriminator}__`,
                 "**Username: **" + `${user.username}#${user.discriminator}` + "\n" +
                 "**ID: **" + `${user.id}` + "\n" +
@@ -55,7 +52,7 @@ module.exports.run = async (bot, message, args, con) => {
                 "**Status: **" + user.presence.status + "\n" +
                 "**Bot: **" + botUser, true)
             .addField('\u200B', '\u200B', true)
-            
+
             .addField('__User Roles__', ' ' + member.roles.map(r => `${r}`).join(', '), true)
             .addField('\u200B', '\u200B', true)
             .addField('__Lurker Profile__', ' ' + bdaymap + pointsmap + allmap, true)

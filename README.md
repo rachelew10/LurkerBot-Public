@@ -46,6 +46,8 @@ Utility Commands:
 
 ```number``` - Get a number between min & max
 
+```afk``` - Set AFK (for inactive user tracking)
+
 Fun commands:
 ------
 
@@ -58,6 +60,8 @@ Fun commands:
 ```urban``` - Search UrbanDictionary for a definition
 
 ```coinflip``` - Flip a coin
+
+``sosig`` - Show off Ramsay's big sausage
 
 Admin Commands:
 ------
@@ -89,9 +93,25 @@ These instructions will get you a copy of the project up and running on your loc
 NodeJS & NPM
 ```https://nodejs.org/en/```
 
+Discord.Js
+```$ npm install discord.js```
+
+Node-gyp
+```$ npm install node-gyp```
+
+mySQL
+````$ npm install mysql````
+
+Moment
+```$ npm install moment```
+
+Git (If you want to update)
+```$ npm install git```
+
+
 ### Setting up locally
 
-1. Install all nodeJS & run npm install. This will install all requirements from the package.json file. If using Heroku to host add the FFMPEG buildpack ```heroku buildpacks:add https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git```
+1. Install all Prerequisites
 
 2. Edit botconfig.json file with relevant info:
     a.```"prefix": "default prefix here",```

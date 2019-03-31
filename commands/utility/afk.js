@@ -4,7 +4,8 @@ module.exports.run = async (bot, message, args, con) => {
 
     let reason = args.join(' ') ? args.join(' ') : "AFK";
     var formatTime = (new Date((new Date((new Date(new Date())).toISOString())).getTime() - ((new Date()).getTimezoneOffset() * 60000))).toISOString().slice(0, 19).replace('T', ' ');
-
+    const currentNickname = message.member.nickname;
+    const newNickname = currentNickname.replace('[AFK]', '');
 
     //AFK mySQL Query
     con.query(`UPDATE alltime, scores SET alltime.afk = true, scores.afk = true, alltime.reason = '${reason}', scores.reason = '${reason}', alltime.afktime = '${formatTime}',  scores.afktime = '${formatTime}' WHERE alltime.user = '${message.author.id}' AND scores.user = '${message.author.id}'`), (err, rows) => {
@@ -12,8 +13,7 @@ module.exports.run = async (bot, message, args, con) => {
     };
 
     //Rename user then reply
-    //message.member.setNickname(`[AFK] ${message.author.username}`).then(message.reply(`I have set your AFK - ${reason}`))
-    message.reply(`I have set your AFK - ${reason}`)
+    message.member.setNickname(`[AFK] ${message.member.displayName}`).then(message.reply(`I have set your AFK - ${reason}`))
 };
 module.exports.help = {
     name: "afk",

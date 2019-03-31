@@ -175,6 +175,8 @@ bot.on("message", message => {
                 if (message.content.includes("afk")) return;
 
                 let user = message.author
+                const currentNickname = message.member.nickname;
+                const newNickname = currentNickname.replace('[AFK]', '');
 
                 if (results.afk === 1) {
 
@@ -183,7 +185,7 @@ bot.on("message", message => {
                     }
 
                     //message.member.setNickname(`[AFK] ${message.author.username}`).then(message.reply(`Welcome back! I've removed your AFK`))
-                    message.reply(`Welcome back. I have removed your AFK.`)
+                    message.member.setNickname(newNickname).then(message.reply(`Welcome back. I have removed your AFK.`))
                 };
             }
         });

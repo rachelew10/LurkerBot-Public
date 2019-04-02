@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args, con) => {
     };
 
     //Rename user then reply
-    message.member.setNickname(`[AFK] ${message.member.displayName}`).then(message.reply(`${message.author.displayName} I have set your AFK - ${reason}`))
+    message.member.setNickname(`[AFK] ${message.member.displayName}`).then(message.reply(`${message.member.displayName} I have set your AFK - ${reason}`))
 };
 module.exports.help = {
     name: "afk",

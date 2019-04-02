@@ -38,13 +38,13 @@ module.exports.run = async (bot, message, args) => {
             .setDescription(`Here is a list of available commands for the ${bot.user.username}`)
             .addField('\u200B', '\u200B')
             .addField(`__**Information Commands:**__`, "``help`` | ``botinfo`` | ``serverinfo`` | ``roleinfo`` | ``ping`` | ``uptime``")
-            //.addField('\u200B', '\u200B')
+
             .addField(`__**Utility Commands:**__`, "``stats`` | ``statsall`` | ``top10`` | ``top10all`` | ``inactive`` | ``inactiveall`` | ``mybirthday`` |  ``profile`` | ``report`` | ``avatar`` | ``timer`` | ``number`` | ``afk``")
-            //.addField('\u200B', '\u200B')
-            .addField(`__**Fun Commands:**__`, "``shame`` | ``gif`` | ``urban`` | ``coinflip`` | ``sosig``")
-            //.addField('\u200B', '\u200B')
+
+            .addField(`__**Fun Commands:**__`, "``shame`` | ``gif`` | ``urban`` | ``coinflip`` | ``sosig`` | ``s8``")
+
             .addField(`__**Admin Commands:**__`, "``prefix`` | ``birthdays`` | ``birthdayadd`` | ``clear``")
-            //.addField('\u200B', '\u200B')
+
             .addField(`__**Developer Commands:**__`, "``refresh`` | ``setactivity`` | ``rename``")
             .addField('\u200B', '\u200B')
             .setFooter(`Developed by ${bot.users.get(dev).tag} for the FATAL GOT:C Server`)

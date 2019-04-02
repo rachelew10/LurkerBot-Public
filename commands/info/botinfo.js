@@ -10,6 +10,8 @@ module.exports.run = async (bot, message, args) => {
         .addField("Name", bot.user.username)
         .addField("Created On", `${moment.utc(bot.user.createdAt).format('DD/MM/YYYY')}`)
         .addField("Developer info", `${bot.users.get(dev).tag} add discord for support`)
+        .addField('\u200B', '\u200B', true)
+        .setFooter("Help support & grow LurkerBot! BTC: 3CTWwVMTKmGJnLg9uJ1dRpZFt68By11sT3" )
 
     return message.channel.send(botembed);
 }

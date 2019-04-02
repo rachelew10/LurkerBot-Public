@@ -1,9 +1,10 @@
-
-const Discord = require("discord.js");
 const moment = require("moment");
 const botconfig = require("../../botconfig.json");
+const mysql = require("mysql")
 
 module.exports.run = async (bot, message, args, con) => {
+
+    
 
     //Birthday admin check
     if (message.author.id === botconfig.bdadmin); else {
@@ -23,9 +24,12 @@ module.exports.run = async (bot, message, args, con) => {
     var date = moment(`${args[1]}`, "DD-MM-YYYY");
     var bday = (date.format("YYYY-MM-DD"));
     var format = (date.format("DD-MM-YYYY"));
+    let sql = "UPDATE ?? SET bday = ? WHERE user = ? AND guild = ?";
+    let inserts = ['alltime', bday, mention.id, message.guild.id];
+    let bdayaddsql = mysql.format(sql, inserts);
 
     if (args[1].length === 10) {
-        con.query(`UPDATE alltime SET bday = '${bday}' WHERE user = '${mention.id}' AND guild = '${message.guild.id}'`);
+        con.query(bdayaddsql);
         message.delete().catch(O_o => { });
         message.channel.send(`Birthday set to ${format} for ${bot.users.get(mention.id).username}`).then(msg => msg.delete(5000))
     };

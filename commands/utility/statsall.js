@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const moment = require("moment");
+const mysql = require("mysql")
 
 module.exports.run = async (bot, message, args, con) => {
     //Grab all users from db for current server
@@ -8,7 +9,11 @@ module.exports.run = async (bot, message, args, con) => {
 
     let mention = message.mentions.users.first() || message.guild.members.get(args[1]) || message.author
 
-    con.query(`SELECT * FROM alltime WHERE user = '${mention.id}' AND guild= '${message.guild.id}'`, (err, rows) => {
+    let sql = "SELECT * FROM ?? WHERE ?? = ? AND ?? = ?";
+    let inserts = ['alltime', 'user', mention.id, 'guild', message.guild.id];
+    let statsallsql = mysql.format(sql, inserts);
+
+    con.query(statsallsql, (err, rows) => {
         if (err) throw err;
 
         if (!rows[0]) return message.channel.send("User not found in database, are they a bot/in the server?")

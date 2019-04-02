@@ -11,13 +11,13 @@ module.exports.run = async (bot, message, args) => {
   })
 
   const embed = new Discord.RichEmbed()
-  .setColor("#FFD700")
-  .setTitle(res.word)
-  .setURL(res.UrbanURL)
-  .addField("Definition", `${res.definition}`)
-  .addField("Example", `${res.example}`)
+    .setColor("#FFD700")
+    .setURL(res.UrbanURL)
+    .addField(`${res.word}'s Definition`, `${res.definition}`)
+    .addField("Example", `${res.example}`)
+    .setFooter(`Requested by: ${message.member.displayName}`, `${message.author.avatarURL}`)
 
-  if (res.tags.length > 0 && res.tags.join(' ').length < 1024){
+  if (res.tags.length > 0 && res.tags.join(' ').length < 1024) {
     embed.addField("tags", regs.tags.join(', '), true)
   }
 

@@ -3,16 +3,17 @@ const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const moment = require("moment")
 const path = require("path");
+const mysql = require("mysql");
+const fs = require("fs");
+var Promise = require('promise');
 //const token = process.env.token;
 const token = botconfig.token;
-const fs = require("fs");
 const bot = new Discord.Client({ disableEveryone: true });
-const mysql = require("mysql");
 var host = botconfig.host;
 var db = botconfig.db;
 var user = botconfig.user
 var pw = botconfig.pw
-var Promise = require('promise');
+
 //------------------------------------------
 
 //MySQL Connection----------------
@@ -28,11 +29,8 @@ var con = mysql.createPool({
 bot.login(token);
 //----------------------
 
-//Command Array---------
-bot.commands = new Discord.Collection();
-//----------------------
-
 //Command Handler----------------
+bot.commands = new Discord.Collection();
 function walk(dir, callback) {
     fs.readdir(dir, function (err, files) {
         if (err) throw err;
@@ -86,12 +84,21 @@ bot.on('guildMemberAdd', member => {
     if (member.user.bot) return;
 
     //Add user into scores table
-    con.query(`SELECT * FROM scores WHERE user="${member.user.id}" AND guild= "${member.guild.id}"`, (err, rows) => {
-        if (err) throw err;
+    let selectsql = "SELECT * FROM ?? WHERE ?? = ? AND ?? = ?";
+    let inserts = ['scores', 'user', member.user.id, 'guild', member.guild.id];
+    let inserts2 = ['alltime', 'user', member.user.id, 'guild', member.guild.id];
+    let selectquery = mysql.format(selectsql, inserts);
+    let selectquery2 = mysql.format(selectsql, inserts2)
 
-        let sql;
+    con.query(selectquery, (err, rows) => {
+        if (err) throw err;
         if (rows.length < 1) {
-            sql = `INSERT INTO scores (user, guild, points) VALUES ('${member.user.id}', '${member.guild.id}', '0')`, (err, rows) => {
+
+            let sql = "INSERT INTO ?? (??, ??, ??) VALUES (?, ?, '0')";
+            let inserts = ['scores', 'user', 'guild', 'points', member.user.id, member.guild.id];
+            let insertquery = mysql.format(sql, inserts);
+
+            query = insertquery, (err) => {
                 if (err) throw err;
             };
 
@@ -99,26 +106,30 @@ bot.on('guildMemberAdd', member => {
             return;
         };
 
-        con.query(sql);
-
+        con.query(query);
 
     });
     //--------------------------
 
     //Add user into alltime table
-    con.query(`SELECT * FROM alltime WHERE user="${member.user.id}" AND guild= "${member.guild.id}"`, (err, rows) => {
+    con.query(selectquery2, (err, rows) => {
         if (err) throw err;
 
-        let sql;
+        let sql = "INSERT INTO ?? (??, ??, ??) VALUES (?, ?, '0')";
+        let inserts = ['alltime', 'user', 'guild', 'points', member.user.id, member.guild.id];
+        let insertquery = mysql.format(sql, inserts);
+
         if (rows.length < 1) {
-            sql = `INSERT INTO alltime (user, guild, points) VALUES ('${member.user.id}', '${member.guild.id}', '0')`, (err, rows) => {
+
+            query = insertquery, (err, rows) => {
                 if (err) throw err;
             };
+
         } else {
             return;
         };
 
-        con.query(sql);
+        con.query(query);
 
 
     });
@@ -131,7 +142,12 @@ bot.on('guildMemberAdd', member => {
 bot.on('guildMemberRemove', member => {
 
     //Remove user from tables
-    con.query(`DELETE alltime, scores FROM alltime INNER JOIN scores ON alltime.user = scores.user WHERE alltime.user='${member.user.id}' AND alltime.guild=${member.guild.id} AND scores.user='${member.user.id}' AND scores.guild=${member.guild.id} `, (err, rows) => {
+
+    let removesql = "DELETE ??, ?? FROM ?? INNER JOIN ?? ON ?? = ?? WHERE ?? = ? AND ?? = ? AND ?? = ? AND ?? = ?";
+    let inserts = ['alltime', 'scores', 'alltime', 'scores', 'alltime.user', 'scores.user', 'alltime.user', member.user.id, 'alltime.guild', member.guild.id, 'scores.user', member.user.id, 'scores.guild', member.guild.id];
+    let removequery = mysql.format(removesql, inserts);
+
+    con.query(removequery, (err, rows) => {
         if (err) throw err;
     });
     //------------------------
@@ -148,8 +164,15 @@ bot.on("message", message => {
     //AFK listener----------------
     user = message.mentions.users.first() || message.author
 
+    let selectsql = "SELECT * FROM ?? WHERE ?? = ?";
+    let selectsql2 = "SELECT * FROM ?? WHERE ?? = ? AND ?? = ?";
+    let inserts = ['alltime', 'user', user.id];
+    let inserts2 = ['scores', 'user', message.author.id, 'guild', message.guild.id]
+    let selectquery = mysql.format(selectsql, inserts);
+    let selectquery2 = mysql.format(selectsql2, inserts2);
+
     //Select alltime table
-    con.query(`SELECT * FROM alltime WHERE user = '${user.id}'`, function (err, result, fields) {
+    con.query(selectquery, function (err, result, fields) {
         if (err) throw err;
 
         Object.keys(result).forEach(function (key) {
@@ -178,9 +201,13 @@ bot.on("message", message => {
                 const currentNickname = message.member.displayName;
                 const newNickname = currentNickname.replace('[AFK]', '');
 
+                let removeafksql = "UPDATE ??, ?? SET ?? = ?, ?? = ?, ?? = NULL, ?? = NULL, ?? = NULL,  ?? = NULL WHERE ?? = ? AND ?? = ?";
+                let inserts = ['alltime', 'scores', 'alltime.afk', false, 'scores.afk', false, 'alltime.reason', 'scores.reason', 'alltime.afktime', 'scores.afktime', 'alltime.user', user.id, 'scores.user', user.id];
+                let removeafkquery = mysql.format(removeafksql, inserts);
+
                 if (results.afk === 1) {
 
-                    con.query(`UPDATE alltime, scores SET alltime.afk = false, scores.afk = false, alltime.reason = NULL, scores.reason = NULL, alltime.afktime = NULL,  scores.afktime = NULL WHERE alltime.user = '${user.id}' AND scores.user = '${user.id}'`), (err, rows) => {
+                    con.query(removeafkquery), (err) => {
                         if (err) throw err;
                     }
 
@@ -212,17 +239,28 @@ bot.on("message", message => {
 
 
     //If message is sent add points to scores table
-    con.query(`SELECT * FROM scores WHERE user="${message.author.id}" AND guild= "${message.guild.id}"`, (err, rows) => {
+    con.query(selectquery2, (err, rows) => {
         if (err) throw err;
+
+        let insertsql = "INSERT INTO ?? (??, ??, ??) VALUES (?, ?, ?)";
+        let updatesql = "UPDATE ?? SET ?? = ?? +? WHERE ?? = ? AND ?? = ?"
+        let inserts = ['scores', 'user', 'guild', 'points', message.author.id, message.guild.id, 1];
+        let inserts2 = ['scores', 'points', 'points', '1', 'user', message.author.id, 'guild', message.guild.id];
+        let insertquery = mysql.format(insertsql, inserts);
+        let updatequery = mysql.format(updatesql, inserts2);
+
 
         let sql;
         if (rows.length < 1) {
-            sql = `INSERT INTO scores (user, guild, points) VALUES ('${message.author.id}', '${message.guild.id}', '1')`, (err, rows) => {
+            sql = insertquery, (err) => {
                 if (err) throw err;
             };
 
         } else {
-            sql = `UPDATE scores SET points = points +1 WHERE user="${message.author.id}" AND guild= "${message.guild.id}"`;
+            sql = updatequery, (err) => {
+                if (err) throw err;
+            };
+        
         };
 
         con.query(sql);
@@ -231,19 +269,25 @@ bot.on("message", message => {
     //--------------------------------------------
 
     //If message is sent add points to alltime table
-    con.query(`SELECT * FROM alltime WHERE user="${message.author.id}" AND guild= "${message.guild.id}"`, (err, rows) => {
+    con.query(selectquery, (err, rows) => {
         if (err) throw err;
+
+        let insertsql = "INSERT INTO ?? (??, ??, ??) VALUES (?, ?, ?)";
+        let updatesql = "UPDATE ?? SET ?? = ?? +? WHERE ?? = ? AND ?? = ?"
+        let inserts = ['alltime', 'user', 'guild', 'points', message.author.id, message.guild.id, 1];
+        let inserts2 = ['alltime', 'points', 'points', '1', 'user', message.author.id, 'guild', message.guild.id];
+        let insertquery2 = mysql.format(insertsql, inserts);
+        let updatequery2 = mysql.format(updatesql, inserts2);
 
 
         let sql;
         if (rows.length < 1) {
-            sql = `INSERT INTO alltime (user, guild, points) VALUES ('${message.author.id}', '${message.guild.id}', '1')`, (err, rows) => {
+            sql = insertquery2, (err) => {
                 if (err) throw err;
             };
-            //connection.release();
+
         } else {
-            let score = rows[0].alltime;
-            sql = `UPDATE alltime SET points = points +1 WHERE user="${message.author.id}" AND guild= "${message.guild.id}"`, (err, rows) => {
+            sql = updatequery2, (err) => {
                 if (err) throw err;
             };
         }

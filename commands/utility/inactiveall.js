@@ -1,9 +1,12 @@
 const Discord = require("discord.js");
 const moment = require("moment");
+const mysql = require("mysql")
 
 module.exports.run = async (bot, message, args, con) => {
 
-  const inactivequery = `SELECT user, points, lstmsg, afk, reason, afktime FROM alltime WHERE guild = '${message.guild.id}' ORDER BY cast(points as SIGNED) ASC LIMIT 15`
+  let sql = "SELECT ??, ??, ??, ??, ??, ?? FROM ?? WHERE ?? = ? ORDER BY cast(?? as SIGNED) ASC LIMIT 15";
+  let inserts = ['user', 'points', 'lstmsg', 'afk', 'reason', 'afktime', 'alltime', 'guild', message.guild.id, 'points'];
+  let inactivequery = mysql.format(sql, inserts);
 
   const query = querytxt => {
     return new Promise((resolve, reject) => {

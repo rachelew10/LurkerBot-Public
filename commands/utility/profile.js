@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const moment = require("moment");
+const mysql = require("mysql");
 
 //Check days
 function checkDays(date) {
@@ -14,9 +15,13 @@ module.exports.run = async (bot, message, args, con) => {
     let member = message.mentions.members.first() || message.member,
         user = member.user;
 
+    let sql = "SELECT * FROM ?? WHERE ?? = ? AND ?? = ?";
+    let inserts = ['scores', 'user', member.id, 'guild', message.guild.id];
+    let inserts2 = ['alltime', 'user', member.id, 'guild', message.guild.id];
+    let pointsquery = mysql.format(sql, inserts);
+    let allquery = mysql.format(sql, inserts2);
+
     //query maps---------------------------
-    const pointsquery = `SELECT * FROM scores WHERE user = '${user.id}' AND guild= '${message.guild.id}'`
-    const allquery = `SELECT * FROM alltime WHERE user = '${user.id}' AND guild= '${message.guild.id}'`
     const query = querytxt => {
         return new Promise((resolve, reject) => {
             con.query(querytxt, (err, results, fields) => {
@@ -30,7 +35,7 @@ module.exports.run = async (bot, message, args, con) => {
 
     const pointsmap = results.map(results => `**Messages Sent:** ${results.points}` + "\n" + `**Lst Msg: **${results.lstmsg ? `${moment.utc(results.lstmsg).format('DD/MM/YYYY HH:mm:ss')}` : "None"} \n`);
     const allmap = results2.map(results2 => `**Alltime Messages Sent:** ${results2.points}`);
-    const bdaymap = results2.map(results2 => `**Birthday:** ${results2.bday ? `${moment.utc(results2.bday).format('DD/MM/YYYY')}` : "Bday not set"} \n`)
+    const bdaymap = results2.map(results2 => `**Birthday:** ${results2.bday ? `${moment.utc(results2.bday).format('DD/MM/YYYY')}` : "None set (Use mybirthday command to set)"} \n`)
     //----------------------------------
 
     //bot check

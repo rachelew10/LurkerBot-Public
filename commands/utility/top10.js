@@ -1,9 +1,12 @@
 const Discord = require("discord.js");
 const moment = require("moment");
+const mysql = require("mysql")
 
 module.exports.run = async (bot, message, args, con) => {
 
-  const top10query = `SELECT user, points, lstmsg FROM scores WHERE guild = '${message.guild.id}' ORDER BY cast(points as SIGNED) DESC LIMIT 10`
+  let sql = "SELECT ??, ??, ?? FROM ?? WHERE ?? = ? ORDER BY cast(?? as SIGNED) DESC LIMIT 10";
+  let inserts = ['user', 'points', 'lstmsg', 'scores', 'guild', message.guild.id, 'points'];
+  let top10query = mysql.format(sql, inserts);
 
   const query = querytxt => {
     return new Promise((resolve, reject) => {

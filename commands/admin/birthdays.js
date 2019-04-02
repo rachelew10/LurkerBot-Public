@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args, con) => {
   };
   const [results, fields] = await query(top10query);
 
-  const map1 = results.map(results => ` **User:** ${bot.users.get(results.user).username} \n **Birthday:** ${moment.utc(results.bday).format('DD/MM/YYYY')}\n`);
+  const map1 = results.map(results => ` **User:** ${bot.users.get(results.user).username} \n **Birthday:** ${moment(results.bday).format('DD/MM/YYYY')}\n`);
 
   message.channel.send(map1)
 }

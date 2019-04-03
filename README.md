@@ -65,6 +65,12 @@ Fun commands:
 
 ``s8`` - A countdown till Game of Thrones S8EP1
 
+``triggered`` - Generate triggered gif
+
+``gotq`` - Game of thrones Quotes
+
+``joke`` - A random joke
+
 Admin Commands:
 ------
 
@@ -126,9 +132,14 @@ Git (If you want to update)
     h.```"dev": "developer ID for dev commands",```
     i.```"bdadmin": "birthday admin ID for admin commands (if bday admin doesnt have administrator role)"```
    
-3. Create a MySQL DB and set up 2 tables. SQL Files in "SQL Structure" file.
+3. Create a MySQL DB and set up 2 tables
 ```alltime, scores```
 
+   3(a). Add fields into alltime table: 
+   ```id (int, key, auto increment), user (varchar), guild (varchar), points (varchar), lstmsg (timestamp, On Update Current_Timestamp),    bday (date)```
+
+   3(b). Add fields into scores table: 
+   ```id (int, key, auto increment), user (varchar), guild (varchar), points (varchar), lstmsg (timestamp, On Update, Current_Timestamp)```
    
 4. run bot
 ```node index.js```

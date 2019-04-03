@@ -41,7 +41,7 @@ module.exports.run = async (bot, message, args) => {
 
             .addField(`__**Utility Commands:**__`, "``stats`` | ``statsall`` | ``top10`` | ``top10all`` | ``inactive`` | ``inactiveall`` | ``mybirthday`` |  ``profile`` | ``report`` | ``avatar`` | ``timer`` | ``number`` | ``afk``")
 
-            .addField(`__**Fun Commands:**__`, "``shame`` | ``gif`` | ``urban`` | ``coinflip`` | ``sosig`` | ``s8``")
+            .addField(`__**Fun Commands:**__`, "``shame`` | ``gif`` | ``urban`` | ``coinflip`` | ``sosig`` | ``s8`` | ``triggered`` | ``gotq`` | ``joke``")
 
             .addField(`__**Admin Commands:**__`, "``prefix`` | ``birthdays`` | ``birthdayadd`` | ``clear``")
 

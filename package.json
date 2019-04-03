@@ -21,6 +21,7 @@
     "path": "^0.12.7",
     "promise": "^8.0.3",
     "relevant-urban": "^2.0.0",
+    "snekfetch": "^4.0.4",
     "superagent": "^4.1.0"
   },
   "engines": {

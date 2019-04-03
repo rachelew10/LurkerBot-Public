@@ -1,6 +1,7 @@
 {
     "prefix": ";",
     "giphyAPI": "",
+    "arcadiaAPI": "",
     "token": "",
     "host": "",
     "db": "",

@@ -43,7 +43,7 @@ module.exports.run = async (bot, message, args) => {
 
             .addField(`__**Fun Commands:**__`, "``shame`` | ``gif`` | ``urban`` | ``coinflip`` | ``sosig`` | ``s8`` | ``triggered`` | ``gotq`` | ``joke``")
 
-            .addField(`__**Admin Commands:**__`, "``prefix`` | ``birthdays`` | ``birthdayadd`` | ``clear``")
+            .addField(`__**Admin Commands:**__`, "``prefix`` | ``birthdays`` | ``birthdayadd`` | ``clear`` | ``fetchid``")
 
             .addField(`__**Developer Commands:**__`, "``refresh`` | ``setactivity`` | ``rename``")
             .addField('\u200B', '\u200B')

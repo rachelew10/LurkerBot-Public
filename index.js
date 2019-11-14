@@ -6,6 +6,7 @@ const path = require("path");
 const mysql = require("mysql");
 const fs = require("fs");
 var Promise = require('promise');
+
 //const token = process.env.token;
 const token = botconfig.token;
 const bot = new Discord.Client({ disableEveryone: true });

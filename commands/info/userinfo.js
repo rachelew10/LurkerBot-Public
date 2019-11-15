@@ -21,8 +21,6 @@ module.exports.run = async (bot, message, args, con) => {
         user = userid.user
         lastMessage = user.lastMessage;
 
-        //if (!lastMessage) return console.log("No user last message")
-
     let sql = "SELECT * FROM ?? WHERE ?? = ? AND ?? = ?";
     let inserts = ['scores', 'user', user.id, 'guild', message.guild.id];
     let inserts2 = ['alltime', 'user', user.id, 'guild', message.guild.id];
@@ -45,26 +43,27 @@ module.exports.run = async (bot, message, args, con) => {
     const allmap = results2.map(results2 => `**Alltime Messages Sent:** ${results2.points}`);
     //----------------------------------
 
-            var time = { year: '2-digit', month: 'numeric', day: 'numeric' };
+    var time = { year: '2-digit', month: 'numeric', day: 'numeric' };
             
-            var profile = new Discord.RichEmbed()
-                .setColor("#FF0000")
-                .setThumbnail(`${user.displayAvatarURL}`)
-                .addField(`\u200B`,
-                    "**Username: **" + `${user.username}#${user.discriminator}` + "\n" +
-                    "**Created On: **" + user.createdAt.toLocaleString('en-GB', time) + "\n" +
-                    "**Account Age: **" + `${checkDays(user.createdAt)}` + "\n" +
-                    "**Server join Date: **" + `${moment.utc(userid.joinedAt).format('DD/MM/YY')}` + "\n" +
-                    "**Status: **" + user.presence.status)
-                     //+ "\n" + 
-                    //"**Last Message: ** " + `"`+ lastMessage.content + `" `+ "\n" +
-                    //"*at " + lastMessage.createdAt.toLocaleString('en-GB', time) + " in #" + lastMessage.channel.name + "*")
-                .addField('\u200B', '\u200B', true)
-                .addField('__User Roles__', ' ' + userid.roles.map(r => `${r}`).join(', '), true)
-                .addField('\u200B', '\u200B', true)
-                .addField('__Lurker Profile__', ' ' + pointsmap + allmap, true)
+    var profile = new Discord.RichEmbed()
+        .setColor("#FF0000")
+        .setThumbnail(`${user.displayAvatarURL}`)
+        .addField(`\u200B`,
+            "**Username: **" + `${user.username}#${user.discriminator}` + "\n" +
+            "**Guild Nickname: **" + `${userid.nickname}`+ "\n" + 
+            "**Created On: **" + user.createdAt.toLocaleString('en-GB', time) + "\n" +
+            "**Account Age: **" + `${checkDays(user.createdAt)}` + "\n" +
+            "**Server join Date: **" + `${moment.utc(userid.joinedAt).format('DD/MM/YY')}` + "\n" +
+            "**Status: **" + user.presence.status)
+             //+ "\n" + 
+            //"**Last Message: ** " + `"`+ lastMessage.content + `" `+ "\n" +
+            //"*at " + lastMessage.createdAt.toLocaleString('en-GB', time) + " in #" + lastMessage.channel.name + "*")
+        .addField('\u200B', '\u200B', true)
+        .addField('__User Roles__', ' ' + userid.roles.map(r => `${r}`).join(', '), true)
+        .addField('\u200B', '\u200B', true)
+        .addField('__Lurker Profile__', ' ' + pointsmap + allmap, true)
 
-            message.channel.send(profile);
+    message.channel.send(profile);
 
     }
 }

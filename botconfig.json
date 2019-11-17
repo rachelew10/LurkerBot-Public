@@ -8,5 +8,7 @@
     "user": "",
     "pw": "",
 	"dev": "",
-	"bdadmin": ""
+    "bdadmin": "",
+    "presencelog": "",
+    "onlinerole": ""
 }

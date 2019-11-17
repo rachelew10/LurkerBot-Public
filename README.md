@@ -15,6 +15,8 @@ Information Commands:
 
 ```roleinfo``` - Lists detailed role information
 
+```userinfo``` - Lists user profile (uses snowflake instead of tag for discretion)
+
 ```ping``` - Bot diagnostic, displays latency info for bot & API
 
 ```uptime``` - Displays how long the bot has been up for
@@ -91,6 +93,12 @@ Developer Commands:
 
 ```rename``` - Set a new nickname for the bot **Developer Only**
 
+Additional Features:
+------
+
+```User presence log``` - Logs when a user comes online(incl idle & DnD) / offline and sends to a channel specified in botconfig.json.
+
+```Automatic online roling``` - Automatically roles a user when they come online (incl idle. & DnD) then un-roles when they go offline. Works side by side with user presence log to restrict access to those showing as invisible.
 
 ## Getting Started
 

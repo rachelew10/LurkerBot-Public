@@ -261,7 +261,7 @@ bot.on("message", message => {
             sql = updatequery, (err) => {
                 if (err) throw err;
             };
-        
+
         };
 
         con.query(sql);
@@ -295,11 +295,39 @@ bot.on("message", message => {
 
         con.query(sql);
     });
-    //--------------------------------------------
 
-    //send eye emoji when message is eye emoji
-    // if (message.content.startsWith("👀")) {
-    //     message.channel.send("👀");
-    // };
+    //Listener event, Presence change------------------
+    bot.on("presenceUpdate", (oldMember, newMember) => {
+
+        //If presence is different
+        if (oldMember.presence.status !== newMember.presence.status) {
+
+            //Presence log channel
+            let channel = bot.channels.get(botconfig.presencelog)
+            //Role to be given when online
+            let onlinerole = botconfig.onlinerole
+
+            //Nickname check
+            if (newMember.nickname == null) {
+                channel.send(`${newMember.user.username} is now ${newMember.presence.status} - *${new Date().toLocaleString()}*`)
+            } else {
+                channel.send(`${newMember.nickname} is now ${newMember.presence.status} - *${new Date().toLocaleString()}*`)
+            };
+
+            //Add role if member is online, idle or DnD
+            if (newMember.presence.status === "online" || "idle" || "dnd") {
+
+                //Only if user has T1-T4 role
+                if (newMember.roles.find(role => role.name === "T1") || newMember.roles.find(role => role.name === "T2") || newMember.roles.find(role => role.name === "T3") || newMember.roles.find(role => role.name === "T4")) {
+                    //Role with onlinerole
+                    newMember.addRole(newMember.guild.roles.find(role => role.name === onlinerole));
+                } else { return }
+            };
+
+            if (newMember.presence.status === "offline") {
+                newMember.removeRole(newMember.guild.roles.find(role => role.name === onlinerole));
+            };
+        }
+    })
 })
 //-----------------------------------

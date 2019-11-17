@@ -37,7 +37,7 @@ module.exports.run = async (bot, message, args) => {
             .setTimestamp()
             .setDescription(`Here is a list of available commands for the ${bot.user.username}`)
             .addField('\u200B', '\u200B')
-            .addField(`__**Information Commands:**__`, "``help`` | ``botinfo`` | ``serverinfo`` | ``roleinfo`` | ``ping`` | ``uptime``")
+            .addField(`__**Information Commands:**__`, "``help`` | ``botinfo`` | ``serverinfo`` | ``roleinfo`` | ``userinfo`` | ``ping`` | ``uptime``")
 
             .addField(`__**Utility Commands:**__`, "``stats`` | ``statsall`` | ``top10`` | ``top10all`` | ``inactive`` | ``inactiveall`` | ``mybirthday`` |  ``profile`` | ``report`` | ``avatar`` | ``timer`` | ``number`` | ``afk``")
 

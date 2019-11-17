@@ -109,20 +109,8 @@ These instructions will get you a copy of the project up and running on your loc
 NodeJS & NPM
 ```https://nodejs.org/en/```
 
-Discord.Js
-```$ npm install discord.js```
-
-Node-gyp
-```$ npm install node-gyp```
-
-mySQL
-````$ npm install mysql````
-
-Moment
-```$ npm install moment```
-
-Git (If you want to update)
-```$ npm install git```
+Install all requirements from package.json
+```$ npm install```
 
 
 ### Setting up locally
@@ -139,15 +127,13 @@ Git (If you want to update)
     g.```"pw": "mysql db password",```
     h.```"dev": "developer ID for dev commands",```
     i.```"bdadmin": "birthday admin ID for admin commands (if bday admin doesnt have administrator role)"```
+    j.```"presencelog": "channel snowflake ID in which presencelogs are to be sent to"```
+    k.```"onlinerole":"Role name to be given to online users - Automatic role feature"```
    
 3. Create a MySQL DB and set up 2 tables
 ```alltime, scores```
 
-   3(a). Add fields into alltime table: 
-   ```id (int, key, auto increment), user (varchar), guild (varchar), points (varchar), lstmsg (timestamp, On Update Current_Timestamp),    bday (date)```
-
-   3(b). Add fields into scores table: 
-   ```id (int, key, auto increment), user (varchar), guild (varchar), points (varchar), lstmsg (timestamp, On Update, Current_Timestamp)```
+Queries for setting up MySQL tables are in /SQLStructure
    
 4. run bot
 ```node index.js```

@@ -128,7 +128,7 @@ Install all requirements from package.json
     h.```"dev": "developer ID for dev commands",```
     i.```"bdadmin": "birthday admin ID for admin commands (if bday admin doesnt have administrator role)"```
     j.```"presencelog": "channel snowflake ID in which presencelogs are to be sent to"```
-    k.```"onlinerole":"Role name to be given to online users - Automatic role feature"```
+    k.```"onlinerole": "Role name to be given to online users - Automatic role feature"```
    
 3. Create a MySQL DB and set up 2 tables
 ```alltime, scores```
